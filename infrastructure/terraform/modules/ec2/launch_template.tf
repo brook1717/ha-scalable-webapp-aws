@@ -9,7 +9,12 @@ resource "aws_launch_template" "this" {
 
   vpc_security_group_ids = [var.ec2_sg_id]
 
-  user_data = base64encode(file("${path.module}/user_data.sh"))
+  user_data = base64encode(templatefile("${path.module}/user_data.sh", {
+    db_host     = var.db_host
+    db_user     = var.db_user
+    db_password = var.db_password
+    db_name     = var.db_name
+  }))
 
   tag_specifications {
     resource_type = "instance"
