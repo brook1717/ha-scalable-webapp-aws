@@ -51,3 +51,17 @@ module "ec2" {
   db_password = var.db_password
   db_name     = var.db_name
 }
+
+
+//Monitoring
+module "monitoring" {
+  source = "./modules/monitoring"
+
+  name = var.name
+
+  alb_name      = module.vpc.alb_name
+  asg_name      = module.ec2.asg_name
+  db_identifier = module.rds.db_identifier
+
+  alert_email = "your-email@example.com"
+}
