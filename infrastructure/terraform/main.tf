@@ -37,8 +37,8 @@ module "rds" {
 module "ec2" {
   source = "./modules/ec2"
 
-  name          = "webapp"
-  ami_id        = var.ami_id
+  name= "webapp"
+  ami_id= var.ami_id
   instance_type = "t3.micro"
 
   ec2_sg_id = module.vpc.ec2_sg_id
