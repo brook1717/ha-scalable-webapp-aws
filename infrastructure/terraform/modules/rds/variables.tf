@@ -22,3 +22,7 @@ variable "db_password" {
   type      = string
   sensitive = true
 }
+variable "kms_key_id" {
+  description = "KMS key for database encryption"
+  type        = string
+}

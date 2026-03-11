@@ -23,3 +23,6 @@ variable "app_port" {
   type        = number
   default     = 80
 }
+variable "certificate_arn" {
+  type = string
+}

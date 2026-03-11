@@ -8,6 +8,7 @@ resource "aws_db_instance" "this" {
 
   allocated_storage = 20
   storage_encrypted = true
+  kms_key_id        = var.kms_key_id
 
   db_name  = var.db_name
   username = var.db_username

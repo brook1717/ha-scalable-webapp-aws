@@ -31,6 +31,9 @@ module "rds" {
   db_name     = var.db_name
   db_username = var.db_user
   db_password = var.db_password
+
+  kms_key_id = module.kms.main_key_id
+  
 }
 
 //ec2
@@ -64,4 +67,18 @@ module "monitoring" {
   db_identifier = module.rds.db_identifier
 
   alert_email = "your-email@example.com"
+}
+
+//kms
+module "kms" {
+  source = "./modules/kms"
+  name   = var.name
+}
+
+
+//acm
+
+module "acm" {
+  source      = "./modules/acm"
+  domain_name = var.domain_name
 }

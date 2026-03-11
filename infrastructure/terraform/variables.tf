@@ -36,3 +36,6 @@ variable "db_name" {
   description = "Database name"
   type        = string
 }
+variable "domain_name" {
+  type        = string
+}
