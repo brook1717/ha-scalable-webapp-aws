@@ -50,3 +50,35 @@ Future improvements may include:
 - Secrets Manager for DB credentials
 - TLS termination on ALB
 - WAF integration
+
+
+## Encryption Strategy
+
+Encryption is implemented to protect data at rest and data in transit.
+
+### KMS Encryption
+AWS KMS is used to manage encryption keys.
+
+Resources encrypted:
+- RDS storage
+- EBS volumes (via launch template)
+- future S3 usage if added
+
+Key rotation is enabled.
+
+### HTTPS (TLS)
+
+Application traffic is secured using HTTPS via the Application Load Balancer.
+
+TLS certificates are managed by AWS Certificate Manager.
+
+Flow:
+
+Client → HTTPS → ALB → EC2 → RDS
+
+### IAM Security
+
+EC2 instances use IAM roles instead of access keys.
+
+Principle used:
+Least privilege.
