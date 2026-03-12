@@ -1,0 +1,10 @@
+variable "common_tags" {
+  description = "Common tags applied to all resources"
+  type        = map(string)
+
+  default = {
+    Project     = "HighlyAvailableWebApp"
+    Environment = "production"
+    ManagedBy   = "Terraform"
+  }
+}

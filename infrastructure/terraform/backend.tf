@@ -1,5 +1,4 @@
 //Remote Backend
-/*
 terraform {
   backend "s3" {
     bucket         = "my-terraform-state-bucket"
@@ -9,4 +8,3 @@ terraform {
     encrypt        = true
   }
 }
-*/
