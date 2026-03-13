@@ -116,32 +116,34 @@ This prevents **direct access to sensitive resources**.
 
 ---
 
-# 📁 Repository Structure
+## Repository Structure
+```bash
+markdown
 highly-available-webapp/
 │
-├── .github/workflows/ # CI/CD pipelines (terraform fmt & validate)
+├── .github/
+│   └── workflows/        # CI/CD pipelines (terraform fmt & validate)
 │
-├── app/ # Backend API
+├── app/                  # Backend API
 │
 ├── infrastructure/
-│ └── terraform/
-│ ├── modules/ # Reusable Terraform modules
-│ │ ├── vpc/
-│ │ ├── alb/
-│ │ ├── ec2/
-│ │ ├── rds/
-│ │ └── iam/
-│ │
-│ ├── main.tf # Root orchestration module
-│ ├── variables.tf # Typed input variables
-│ ├── outputs.tf # Infrastructure outputs
-│ └── backend.tf # Remote state (S3 + DynamoDB)
+│   └── terraform/
+│       ├── modules/      # Reusable Terraform modules
+│       │   ├── vpc/
+│       │   ├── alb/
+│       │   ├── ec2/
+│       │   ├── rds/
+│       │   └── iam/
+│       │
+│       ├── main.tf       # Root orchestration module
+│       ├── variables.tf  # Typed input variables
+│       ├── outputs.tf    # Infrastructure outputs
+│       └── backend.tf    # Remote state (S3 + DynamoDB)
 │
-├── docs/ # Architecture & security documentation
+├── docs/                 # Architecture & security documentation
 │
-└── scripts/ # Load testing & failure simulations
-
-
+└── scripts/              # Load testing & failure simulations
+```
 The infrastructure is designed with **modular Terraform architecture**, enabling **reusability and maintainability**.
 
 ---
@@ -185,7 +187,7 @@ Required:
 terraform init \
 -backend-config="bucket=my-tf-state" \
 -backend-config="dynamodb_table=my-lock-table"
-
+```
 ⚙ CI/CD Integration
 
 GitHub Actions automatically validates infrastructure code.
